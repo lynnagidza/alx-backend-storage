@@ -47,8 +47,8 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @count_calls # task 2
-    @call_history # task 3
+    @call_history  # task 3
+    @count_calls  # task 2
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """generate a random key, store the input data in Redis using the key
         and return the key"""
@@ -90,5 +90,7 @@ def replay(method: Callable):
     print(f"{method_name} was called {count} times:")
 
     for inp, out in zip(inputs, outputs):
-        print(f"{method_name}(*{inp.decode('utf-8')}) -> {out.decode('utf-8')}")
+        print(
+            f"{method_name}(*{inp.decode('utf-8')}) -> {out.decode('utf-8')}"
+        )
 # end of task 4
